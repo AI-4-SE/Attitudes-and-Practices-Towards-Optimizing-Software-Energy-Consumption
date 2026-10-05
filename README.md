@@ -39,7 +39,7 @@ docker build --network=host -t software-energy-consumption-evaluation app/
 ```
 2. Run the container:
 ```bash
-docker run -p 127.0.0.1:8501:8501 software-energy-consumption-evaluation
+docker run -p 127.0.0.1:8501:8501 -v "$PWD/app/data:/app/app/data:ro" software-energy-consumption-evaluation
 ```
 3. Open the UI:
 - http://localhost:8501
