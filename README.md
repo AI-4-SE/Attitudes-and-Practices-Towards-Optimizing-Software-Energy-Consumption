@@ -33,15 +33,17 @@ streamlit run app/app.py
 
 
 ### Option B: Run with Docker
-1. Build the container:
+1. Build and run the container:
+```bash
+cd app && docker compose up --build
+```
+or
 ```bash
 docker build --network=host -t software-energy-consumption-evaluation app/
+docker run -w / -p 127.0.0.1:8501:8501 software-energy-consumption-evaluation \
+  streamlit run /app/app.py --server.port=8501
 ```
-2. Run the container:
-```bash
-docker run -p 127.0.0.1:8501:8501 -v "$PWD/app/data:/app/app/data:ro" software-energy-consumption-evaluation
-```
-3. Open the UI:
+2. Open the UI:
 - http://localhost:8501
 
 
