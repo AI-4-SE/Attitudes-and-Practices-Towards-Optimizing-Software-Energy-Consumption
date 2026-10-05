@@ -35,14 +35,14 @@ streamlit run app/app.py
 ### Option B: Run with Docker
 1. Build the container:
 ```bash
-docker build -t software-energy-consumption-evaluation .
+docker build --network=host -t software-energy-consumption-evaluation app/
 ```
 2. Run the container:
 ```bash
-docker run -p 127.0.0.1:3000:3000 software-energy-consumption-evaluation
+docker run -p 127.0.0.1:8501:8501 software-energy-consumption-evaluation
 ```
 3. Open the UI:
-- http://localhost:3000
+- http://localhost:8501
 
 
 ## Figures
