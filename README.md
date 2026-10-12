@@ -11,8 +11,10 @@ The study is based on an online survey implemented with **LimeSurvey** and condu
 
 All data files are located in [`app/data`](./app/data):
 
-- `results-survey762399.csv` — LimeSurvey export (tabular responses).
-- `Card-Sorting.csv` — Overview and results of the card-sorting procedure.
+- `results-survey762399.csv` — LimeSurvey export (tabular responses)
+- `Card-Sorting.csv` — Overview and results of the card-sorting procedure
+- `Survey Question and Answers.pdf` — German/English translation of the Survey Question and Answers
+- `Call for Participation.pdf` — German/English translation of the Call for Participation
 
 ## Reproducing the Analysis
 
