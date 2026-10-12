@@ -30,7 +30,7 @@ pip install -r app/requirements.txt
 ```bash
 streamlit run app/app.py
 ```
-3. Open the UI (default):   
+3. Open the UI (default):
 - http://localhost:8501
 
 

@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN ls
+RUN apt-get update && apt-get install -y --no-install-recommends r-base r-base-dev && rm -rf /var/lib/apt/lists/*
 RUN pip install -r requirements.txt
 
 EXPOSE 8501

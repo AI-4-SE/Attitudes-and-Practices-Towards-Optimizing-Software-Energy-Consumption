@@ -1,6 +1,9 @@
 services:
-    app:
-        build: .
-        ports:
-            - 8501:8501
-        entrypoint: [ "streamlit", "run", "/app/app.py", "–server.port=8501", "--browser.gatherUsageStats", "false", "--server.enableXsrfProtection", "false"]
+  app:
+    build:
+      context: .
+      network: host
+    working_dir: /
+    ports:
+      - "127.0.0.1:8501:8501"
+    entrypoint: ["streamlit", "run", "/app/app.py", "--server.port=8501", "--browser.gatherUsageStats", "false", "--server.enableXsrfProtection", "false"]

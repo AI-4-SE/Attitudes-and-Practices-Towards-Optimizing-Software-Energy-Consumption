@@ -142,14 +142,8 @@ def plot_perceived_importance_likert(out_path):
 
     )
 
-def plot_scenario_likert(out_path):
-    scenario_data = {
-        "No correlation": {1: 0, 2: 0, 3: 26, 4: 49, 5: 1},
-        "Negative correlation": {1: 3, 2: 18, 3: 20, 4: 32, 5: 10},
-        "Moderate positive correlation": {1: 0, 2: 2, 3: 8, 4: 54, 5: 19},
-        "Strong positive correlation": {1: 0, 2: 2, 3: 6, 4: 47, 5: 29},
-    }
-
+def plot_scenario_likert(out_path, scenario_data):
+    """scenario_data: {scenario label: {1..5: participant count}} (see app.py:_strategy2_scenario_likert_data)."""
     category_labels = {
         5: "Perfect positive",
         4: "Moderate positive",
@@ -170,12 +164,13 @@ def plot_scenario_likert(out_path):
         scenario_data,
         out_path=out_path,
         legend_title="Correlation",
-        legend_loc="center left",
+        legend_loc="below",
         normalize=False,
         category_labels=category_labels,
         category_colors=my_colors,
         fontsize=12,
         percentages=False,
+        show_n=True,
         #plot_title="Responses to 'How important is the energy consumption of your software product for ...'"
     )
 
@@ -220,20 +215,22 @@ def plot_proxy_suitability_likert(out_path):
         #plot_title="Responses to 'How important is the energy consumption of your software product for ...'"
     )
 
-def plot_scenario_likert_relevance(out_path):
-    scenario_data = {
-    "No correlation": {1: 0, 2: 0, 3: 19, 4: 35, 5: 0},
-    "No correlation (R)":       {1: 0, 2: 0, 3: 7, 4: 14, 5: 1},
+def plot_scenario_likert_relevance(out_path, scenario_data):
+    """scenario_data: {scenario label / "<label> (R)": {1..5: participant count}}; "(R)" rows are the
+    participants who consider energy consumption relevant (see app.py:_strategy2_scenario_likert_data)."""
+    correct_categories = {
+        "No correlation": [3],
+        "No correlation (R)": [3],
 
-    "Negative correlation": {1: 1, 2: 12, 3: 14, 4: 22, 5: 10},
-    "Negative correlation (R)":       {1: 2, 2: 6, 3: 6, 4: 10, 5: 2},
+        "Negative correlation": [1, 2],
+        "Negative correlation (R)": [1, 2],
 
-    "Moderate positive correlation": {1: 0, 2: 2, 3: 5, 4: 37, 5: 12},
-    "Moderate positive correlation (R)":       {1: 0, 2: 0, 3: 3, 4: 17, 5: 7},
+        "Moderate positive correlation": [4],
+        "Moderate positive correlation (R)": [4],
 
-    "Strong positive correlation": {1: 0, 2: 2, 3: 6, 4: 47, 5: 29},
-    "Strong positive correlation (R)":       {1: 0, 2: 0, 3: 1, 4: 16, 5: 10}, 
-}
+        "Strong positive correlation": [5],
+        "Strong positive correlation (R)": [5],
+    }
 
     category_labels = {
         5: "Perfect positive",
@@ -255,11 +252,13 @@ def plot_scenario_likert_relevance(out_path):
         scenario_data,
         out_path=out_path,
         legend_title="Correlation",
-        legend_loc="center left",
+        legend_loc="below",
         normalize=True,
         category_labels=category_labels,
         category_colors=my_colors,
         fontsize=12,
         percentages=True,
+        show_n=True,
+        correct_categories=correct_categories,
         #plot_title="Responses to 'How important is the energy consumption of your software product for ...'"
     )
